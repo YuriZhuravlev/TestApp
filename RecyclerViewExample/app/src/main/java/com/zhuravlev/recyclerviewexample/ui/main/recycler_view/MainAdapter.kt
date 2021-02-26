@@ -3,9 +3,12 @@ package com.zhuravlev.recyclerviewexample.ui.main.recycler_view
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.zhuravlev.recyclerviewexample.MainActivity
 import com.zhuravlev.recyclerviewexample.R
 import com.zhuravlev.recyclerviewexample.model.Data
+import com.zhuravlev.recyclerviewexample.ui.service.ServiceFragment
 import com.zhuravlev.recyclerviewexample.utils.getColorFromString
+import com.zhuravlev.recyclerviewexample.utils.replaceFragment
 
 class MainAdapter(data: Data) : RecyclerView.Adapter<MainViewHolder>() {
     val mData = data
@@ -17,8 +20,9 @@ class MainAdapter(data: Data) : RecyclerView.Adapter<MainViewHolder>() {
     override fun onBindViewHolder(holder: MainViewHolder, position: Int) {
         with(mData.categories!![position]) {
             holder.name.text = this!!.name!!
-            holder.count.setBackgroundColor(getColorFromString(this!!.color!!))
+            holder.count.background.setTint(getColorFromString(this.color!!))
             holder.count.text = this.count.toString()
+            holder.view.setOnClickListener { MainActivity.instance?.replaceFragment(ServiceFragment.newInstance(this.type!!)) }
         }
     }
 

@@ -16,7 +16,7 @@
 
     <style name="Theme.RecyclerViewExample.MainToolbar">
         <item name="titleTextColor">@color/white</item>
-        <item name="android:background">@color/purple_700</item>
+        <item name="android:background">@color/colorPrimary</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">?attr/actionBarSize</item>
     </style>

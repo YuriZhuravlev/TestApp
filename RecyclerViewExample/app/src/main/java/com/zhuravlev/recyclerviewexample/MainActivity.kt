@@ -8,6 +8,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        instance = this
         setContentView(R.layout.activity_main)
         setSupportActionBar(findViewById(R.id.toolbar))
         if (savedInstanceState == null) {
@@ -15,5 +16,14 @@ class MainActivity : AppCompatActivity() {
                     .replace(R.id.container, MainFragment.newInstance())
                     .commitNow()
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        instance = null
+    }
+
+    companion object {
+        var instance: AppCompatActivity? = null
     }
 }
