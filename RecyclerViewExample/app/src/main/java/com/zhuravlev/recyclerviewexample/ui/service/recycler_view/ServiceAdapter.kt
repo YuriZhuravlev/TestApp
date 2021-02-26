@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.zhuravlev.recyclerviewexample.R
 import com.zhuravlev.recyclerviewexample.model.Service
 
-class ServiceAdapter(list: List<Service?>) : RecyclerView.Adapter<ServiceViewHolder>() {
+class ServiceAdapter(list: List<Service>) : RecyclerView.Adapter<ServiceViewHolder>() {
     val mList = list
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ServiceViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_service, parent, false)
@@ -15,7 +15,7 @@ class ServiceAdapter(list: List<Service?>) : RecyclerView.Adapter<ServiceViewHol
 
     override fun onBindViewHolder(holder: ServiceViewHolder, position: Int) {
         with(mList[position]) {
-            holder.title.text = this!!.name
+            holder.title.text = this.name
             holder.description.text = this.description
             holder.view.setOnClickListener { }
         }

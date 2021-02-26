@@ -41,7 +41,13 @@ class BaseViewModel : ViewModel() {
         mData.postValue(data)
     }
 
-    fun getServices(type: String): List<Service?> {
-        return mData.value!!.objects!!
+    fun getServices(type: String): List<Service> {
+        val list = mutableListOf<Service>()
+        mData.value!!.objects!!.forEach {
+            if (it != null && it.type.equals(type)) {
+                list.add(it)
+            }
+        }
+        return list.toList()
     }
 }
