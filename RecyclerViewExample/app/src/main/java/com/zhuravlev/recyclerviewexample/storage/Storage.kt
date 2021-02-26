@@ -20,7 +20,7 @@ class Storage {
     private val mApiService = getApiService()
 
     // TODO add room
-    fun getResponse(onSuccess: (Data) -> Unit, onFailed: () -> Unit, onError: () -> Unit = {}) {
+    fun getData(onSuccess: (Data) -> Unit, onFailed: () -> Unit, onError: () -> Unit = {}) {
         GlobalScope.launch(Dispatchers.IO) {
             try {
                 val response = mApiService.getList()
