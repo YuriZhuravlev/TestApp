@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.zhuravlev.recyclerviewexample.R
 import com.zhuravlev.recyclerviewexample.model.Service
+import com.zhuravlev.recyclerviewexample.utils.setImage
 
 class ServiceAdapter(list: List<Service>) : RecyclerView.Adapter<ServiceViewHolder>() {
     val mList = list
@@ -17,6 +18,7 @@ class ServiceAdapter(list: List<Service>) : RecyclerView.Adapter<ServiceViewHold
         with(mList[position]) {
             holder.title.text = this.name
             holder.description.text = this.description
+            setImage(holder.image, this.image)
             holder.view.setOnClickListener { }
         }
     }
