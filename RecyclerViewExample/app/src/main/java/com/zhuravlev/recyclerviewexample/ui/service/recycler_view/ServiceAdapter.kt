@@ -9,15 +9,15 @@ import com.zhuravlev.recyclerviewexample.model.Service
 class ServiceAdapter(list: List<Service?>) : RecyclerView.Adapter<ServiceViewHolder>() {
     val mList = list
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ServiceViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_category, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_service, parent, false)
         return ServiceViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: ServiceViewHolder, position: Int) {
         with(mList[position]) {
-//            holder.name.text = this!!.name!!
-//            holder.count.background.setTint(getColorFromString(this.color!!))
-//            holder.count.text = this.count.toString()
+            holder.title.text = this!!.name
+            holder.description.text = this.description
+            holder.view.setOnClickListener { }
         }
     }
 

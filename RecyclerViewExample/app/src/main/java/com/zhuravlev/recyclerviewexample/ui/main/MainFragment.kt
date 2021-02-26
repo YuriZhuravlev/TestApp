@@ -34,7 +34,10 @@ class MainFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(BaseViewModel::class.java)
+//        viewModel = ViewModelProvider(this).get(BaseViewModel::class.java)
+        viewModel = activity?.run {
+            ViewModelProvider(this)[BaseViewModel::class.java]
+        } ?: throw Exception("Invalid Activity")
         viewModel.getData().observe(viewLifecycleOwner, mObserverData)
     }
 

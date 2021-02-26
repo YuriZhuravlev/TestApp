@@ -22,7 +22,7 @@ class MainAdapter(data: Data) : RecyclerView.Adapter<MainViewHolder>() {
             holder.name.text = this!!.name!!
             holder.count.background.setTint(getColorFromString(this.color!!))
             holder.count.text = this.count.toString()
-            holder.view.setOnClickListener { MainActivity.instance?.replaceFragment(ServiceFragment.newInstance(this.type!!)) }
+            holder.view.setOnClickListener { MainActivity.instance!!.replaceFragment(ServiceFragment.newInstance(this.type.toString())) }
         }
     }
 

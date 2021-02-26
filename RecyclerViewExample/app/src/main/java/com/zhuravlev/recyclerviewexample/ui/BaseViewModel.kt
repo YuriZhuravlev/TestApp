@@ -3,6 +3,7 @@ package com.zhuravlev.recyclerviewexample.ui
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.zhuravlev.recyclerviewexample.model.Data
+import com.zhuravlev.recyclerviewexample.model.Service
 import com.zhuravlev.recyclerviewexample.storage.getStorage
 
 class BaseViewModel : ViewModel() {
@@ -38,5 +39,9 @@ class BaseViewModel : ViewModel() {
     private fun showData(data: Data) {
         mError.postValue(false)
         mData.postValue(data)
+    }
+
+    fun getServices(type: String): List<Service?> {
+        return mData.value!!.objects!!
     }
 }
