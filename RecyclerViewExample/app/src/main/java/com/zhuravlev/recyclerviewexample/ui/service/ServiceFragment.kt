@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
+import com.zhuravlev.recyclerviewexample.MainActivity
 import com.zhuravlev.recyclerviewexample.R
 import com.zhuravlev.recyclerviewexample.ui.BaseViewModel
 import com.zhuravlev.recyclerviewexample.ui.main.recycler_view.ServiceAdapter
@@ -22,8 +23,6 @@ class ServiceFragment(val type: String) : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View {
         activity!!.title = getString(R.string.objects)
-//        (activity as MainActivity).supportActionBar?.setHomeButtonEnabled(true)
-//        (activity as MainActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
         val v = inflater.inflate(R.layout.fragment_base, container, false)
         mRecyclerView = v.findViewById(R.id.base_recycler_view)
         return v
@@ -35,5 +34,11 @@ class ServiceFragment(val type: String) : Fragment() {
             ViewModelProvider(this)[BaseViewModel::class.java]
         } ?: throw Exception("Invalid Activity")
         mRecyclerView.adapter = ServiceAdapter(viewModel.getServices(type))
+    }
+
+    override fun onResume() {
+        (activity as MainActivity).titleView?.setText(R.string.objects)
+        (activity as MainActivity).backButton?.visibility = View.VISIBLE
+        super.onResume()
     }
 }
