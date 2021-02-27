@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import com.zhuravlev.recyclerviewexample.ui.main.MainFragment
 
 class MainActivity : AppCompatActivity() {
@@ -11,10 +12,10 @@ class MainActivity : AppCompatActivity() {
     var backButton: Button? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.getDefaultNightMode())
         super.onCreate(savedInstanceState)
         instance = this
         setContentView(R.layout.activity_main)
-        setSupportActionBar(findViewById(R.id.toolbar))
         titleView = findViewById(R.id.toolbar_title)
         backButton = findViewById(R.id.toolbar_back_button)
         backButton!!.setOnClickListener {

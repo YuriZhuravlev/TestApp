@@ -8,8 +8,12 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="pressed">#DFDFDF</color>
+    <color name="unpressed">#FFFFFFFF</color>
+    <color name="text">#FF2F2F2F</color>
+    <color name="textTitle">#FF000000</color>
     <color name="colorPrimary">#444444</color>
     <color name="colorPrimaryVariant">#333333</color>
     <color name="colorSecondary">#121212</color>
     <color name="colorSecondaryVariant">#212121</color>
+    <color name="arrow_next">#303030</color>
 </resources>
