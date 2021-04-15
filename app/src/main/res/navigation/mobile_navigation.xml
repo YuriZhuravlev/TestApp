@@ -8,18 +8,30 @@
     <fragment
         android:id="@+id/navigation_home"
         android:name="com.zhuravlev.leroy.ui.home.HomeFragment"
-        android:label="@string/title_home"
+        android:label="@string/home"
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.zhuravlev.leroy.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        android:id="@+id/navigation_list"
+        android:name="com.zhuravlev.leroy.ui.example.ExampleFragment"
+        android:label="@string/list"
+        tools:layout="@layout/fragment_example" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.zhuravlev.leroy.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        android:id="@+id/navigation_shop"
+        android:name="com.zhuravlev.leroy.ui.example.ExampleFragment"
+        android:label="@string/shop"
+        tools:layout="@layout/fragment_example" />
+
+    <fragment
+        android:id="@+id/navigation_profile"
+        android:name="com.zhuravlev.leroy.ui.example.ExampleFragment"
+        android:label="@string/profile"
+        tools:layout="@layout/fragment_example" />
+
+    <fragment
+        android:id="@+id/navigation_basket"
+        android:name="com.zhuravlev.leroy.ui.example.ExampleFragment"
+        android:label="@string/basket"
+        tools:layout="@layout/fragment_example" />
 </navigation>
