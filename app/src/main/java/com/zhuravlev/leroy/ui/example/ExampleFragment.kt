@@ -5,12 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.zhuravlev.leroy.R
+import com.zhuravlev.leroy.ui.simple.SimpleFragment
 
-class ExampleFragment : Fragment() {
+class ExampleFragment : SimpleFragment() {
 
     private lateinit var exampleViewModel: ExampleViewModel
 
