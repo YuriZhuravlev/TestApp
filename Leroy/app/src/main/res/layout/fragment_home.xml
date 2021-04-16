@@ -1,47 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.home.HomeFragment">
+    android:layout_height="match_parent">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_catalog"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        tools:listitem="@layout/item_type"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".ui.home.HomeFragment">
 
-    <TextView
-        android:id="@+id/title_block1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        style="@style/Theme.Leroy.TitleBlock"
-        android:text="@string/limited_offer" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_catalog"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/item_type" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_items1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        tools:listitem="@layout/item_goods"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+        <TextView
+            android:id="@+id/title_block1"
+            style="@style/Theme.Leroy.TitleBlock"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/limited_offer" />
 
-    <TextView
-        android:id="@+id/title_block2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        style="@style/Theme.Leroy.TitleBlock"
-        android:text="@string/best_prices" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_items1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/item_goods" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_items2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        tools:listitem="@layout/item_goods"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
-</LinearLayout>
+        <TextView
+            android:id="@+id/title_block2"
+            style="@style/Theme.Leroy.TitleBlock"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/best_prices" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_items2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/item_goods" />
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

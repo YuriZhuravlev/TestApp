@@ -3,6 +3,7 @@ package com.zhuravlev.leroy.ui.home
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.zhuravlev.leroy.model.Catalog
 import com.zhuravlev.leroy.model.Good
 import com.zhuravlev.leroy.repository.Repository
 
@@ -13,6 +14,10 @@ class HomeViewModel : ViewModel() {
         private val _listGoods2 = MutableLiveData<List<Good>>()
     }
 
+    private val _listCatalog = MutableLiveData<List<Catalog>>().apply {
+        this.postValue(Catalog.getList())
+    }
+    val listCatalog: LiveData<List<Catalog>> = _listCatalog
     val listGoods1: LiveData<List<Good>> = _listGoods1
     val listGoods2: LiveData<List<Good>> = _listGoods2
 
