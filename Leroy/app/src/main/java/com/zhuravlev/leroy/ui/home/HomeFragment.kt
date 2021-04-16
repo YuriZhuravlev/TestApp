@@ -1,6 +1,5 @@
 package com.zhuravlev.leroy.ui.home
 
-import android.app.Activity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -18,9 +17,9 @@ class HomeFragment : Fragment() {
 
     private lateinit var homeViewModel: HomeViewModel
 
-    override fun onAttach(activity: Activity) {
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
         (activity as MainActivity).switchToolbar(true)
-        super.onAttach(activity)
+        super.onActivityCreated(savedInstanceState)
     }
 
     override fun onCreateView(
