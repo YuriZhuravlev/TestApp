@@ -27,7 +27,7 @@
         tools:text="12.4 $/шт" />
 
     <TextView
-        android:id="@+id/item_text_goods"
+        android:id="@+id/item_title_goods"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@color/black"

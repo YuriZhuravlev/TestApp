@@ -20,7 +20,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         style="@style/Theme.Leroy.TitleBlock"
-        tools:text="Title block" />
+        android:text="@string/limited_offer" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_items1"
@@ -35,7 +35,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         style="@style/Theme.Leroy.TitleBlock"
-        tools:text="Title block" />
+        android:text="@string/best_prices" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_items2"
