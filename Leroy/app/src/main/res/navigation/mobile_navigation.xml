@@ -8,8 +8,13 @@
     <fragment
         android:id="@+id/navigation_home"
         android:name="com.zhuravlev.leroy.ui.home.HomeFragment"
-        android:label="@string/home"
-        tools:layout="@layout/fragment_home" />
+        android:label="@string/home">
+        <action
+            android:id="@+id/action_to_tile"
+            app:destination="@id/navigation_tile"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_list"
@@ -34,4 +39,9 @@
         android:name="com.zhuravlev.leroy.ui.example.ExampleFragment"
         android:label="@string/basket"
         tools:layout="@layout/fragment_example" />
+    <fragment
+        android:id="@+id/navigation_tile"
+        android:name="com.zhuravlev.leroy.ui.tile.TileFragment"
+        android:label="@string/catalog"
+        tools:layout="@layout/fragment_catalogs" />
 </navigation>

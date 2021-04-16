@@ -16,5 +16,15 @@ open class Catalog(val title: String, val imageId: Int) {
                 Catalog("Смотреть все", 0)
             )
         }
+
+        fun getTile(): List<Catalog> {
+            return listOf(
+                Catalog("Сад", R.drawable.img_garden),
+                Catalog("Освещение", R.drawable.img_lamp),
+                Catalog("Инструменты", R.drawable.img_instruments),
+                Catalog("Стройматериалы", R.drawable.img_brick),
+                Catalog("Декор", R.drawable.img_rull)
+            )
+        }
     }
 }

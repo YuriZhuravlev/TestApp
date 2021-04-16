@@ -11,4 +11,5 @@
     <string name="search_goods">Поиск товаров</string>
     <string name="best_prices">Лучшая цена</string>
     <string name="limited_offer">Предложение ограничено</string>
+    <string name="catalog">Каталог</string>
 </resources>
