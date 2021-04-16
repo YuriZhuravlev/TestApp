@@ -13,7 +13,7 @@
         android:layout_height="@dimen/size_item"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:src="@drawable/ic_list" />
+        tools:src="@drawable/ic_load" />
 
 
     <TextView
