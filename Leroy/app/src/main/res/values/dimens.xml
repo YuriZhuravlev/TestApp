@@ -7,4 +7,5 @@
     <dimen name="big_margin">20dp</dimen>
     <dimen name="text_size_title">26sp</dimen>
     <dimen name="size_bar_item">40dp</dimen>
+    <dimen name="size_image_type">100dp</dimen>
 </resources>

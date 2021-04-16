@@ -12,7 +12,14 @@ class CatalogAdapter(val list: List<Catalog>) : Adapter<CatalogViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CatalogViewHolder {
         return CatalogViewHolder(
-            LayoutInflater.from(parent.context).inflate(R.layout.item_type, parent, false)
+            LayoutInflater.from(parent.context).inflate(
+                if (viewType == 0) {
+                    R.layout.item_type
+                } else {
+                    R.layout.item_show_all
+                }, parent, false
+            )
+
         )
     }
 
@@ -22,7 +29,9 @@ class CatalogAdapter(val list: List<Catalog>) : Adapter<CatalogViewHolder>() {
                 Toast.makeText(it.context, "Click ${this.title}", Toast.LENGTH_SHORT).show()
             }
             holder.title.text = this.title
-            holder.image.setImageResource(this.imageId)
+            if (getItemViewType(position) == 0) {
+                holder.image.setImageResource(this.imageId)
+            }
         }
 
     }
@@ -31,4 +40,11 @@ class CatalogAdapter(val list: List<Catalog>) : Adapter<CatalogViewHolder>() {
         return list.size
     }
 
+    override fun getItemViewType(position: Int): Int {
+        return if (list.lastIndex == position) {
+            1
+        } else {
+            0
+        }
+    }
 }

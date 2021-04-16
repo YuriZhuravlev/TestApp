@@ -12,7 +12,8 @@ open class Catalog(val title: String, val imageId: Int) {
                 Catalog("Освещение", R.drawable.img_lamp),
                 Catalog("Инструменты", R.drawable.img_instruments),
                 Catalog("Стройматериалы", R.drawable.img_brick),
-                Catalog("Декор", R.drawable.img_rull)
+                Catalog("Декор", R.drawable.img_rull),
+                Catalog("Смотреть все", 0)
             )
         }
     }
