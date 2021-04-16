@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import com.zhuravlev.leroy.MainActivity
@@ -33,13 +32,13 @@ class HomeFragment : Fragment() {
         val catalogs: RecyclerView = root.findViewById(R.id.recycler_catalog)
         val items1: RecyclerView = root.findViewById(R.id.recycler_items1)
         val items2: RecyclerView = root.findViewById(R.id.recycler_items2)
-        homeViewModel.listCatalog.observe(viewLifecycleOwner, Observer {
+        homeViewModel.listCatalog.observe(viewLifecycleOwner, {
             catalogs.adapter = CatalogAdapter(it)
         })
-        homeViewModel.listGoods1.observe(viewLifecycleOwner, Observer {
+        homeViewModel.listGoods1.observe(viewLifecycleOwner, {
             items1.adapter = GoodsAdapter(it)
         })
-        homeViewModel.listGoods2.observe(viewLifecycleOwner, Observer {
+        homeViewModel.listGoods2.observe(viewLifecycleOwner, {
             items2.adapter = GoodsAdapter(it)
         })
         return root

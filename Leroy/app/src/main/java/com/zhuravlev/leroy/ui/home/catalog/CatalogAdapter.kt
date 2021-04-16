@@ -1,9 +1,10 @@
 package com.zhuravlev.leroy.ui.home.goods
 
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
+import androidx.navigation.NavDirections
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import com.zhuravlev.leroy.R
@@ -35,13 +36,20 @@ open class CatalogAdapter(val list: List<Catalog>) : Adapter<CatalogViewHolder>(
                 0 -> Navigation.createNavigateOnClickListener(R.id.action_to_tile)
                 list.lastIndex -> Navigation.createNavigateOnClickListener(R.id.action_to_tile)
                 else -> {
-                    View.OnClickListener { v ->
-                        Toast.makeText(
-                            v?.context,
-                            "Click ${this.title}",
-                            Toast.LENGTH_SHORT
-                        ).show()
+                    val direction = object : NavDirections {
+                        override fun getActionId(): Int {
+                            return R.id.action_to_lists
+                        }
+
+                        override fun getArguments(): Bundle {
+                            val bundle = Bundle()
+                            bundle.putString("category", list[position].title)
+                            return bundle
+                        }
+
                     }
+                    Navigation.createNavigateOnClickListener(direction)
+//                    Navigation.createNavigateOnClickListener(R.id.action_to_lists)
                 }
             }
             holder.view.setOnClickListener(clickListener)

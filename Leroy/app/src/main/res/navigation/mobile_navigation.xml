@@ -11,9 +11,14 @@
         android:label="@string/home">
         <action
             android:id="@+id/action_to_tile"
-            app:destination="@id/navigation_tile"
-            app:enterAnim="@android:anim/slide_in_left"
-            app:exitAnim="@android:anim/slide_out_right" />
+            app:destination="@id/navigation_tile" />
+        <action
+            android:id="@+id/action_to_lists"
+            app:destination="@id/listsFragment">
+            <argument
+                android:name="category"
+                android:defaultValue="" />
+        </action>
     </fragment>
 
     <fragment
@@ -44,4 +49,11 @@
         android:name="com.zhuravlev.leroy.ui.tile.TileFragment"
         android:label="@string/catalog"
         tools:layout="@layout/fragment_catalogs" />
+    <fragment
+        android:id="@+id/listsFragment"
+        android:name="com.zhuravlev.leroy.ui.lists.ListsFragment">
+        <argument
+            android:name="category"
+            app:argType="string" />
+    </fragment>
 </navigation>
