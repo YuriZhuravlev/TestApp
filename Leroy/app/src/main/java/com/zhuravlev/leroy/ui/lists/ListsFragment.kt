@@ -32,16 +32,16 @@ class ListsFragment : SimpleFragment() {
         val expandableListView: ExpandableListView = root.findViewById(R.id.expandable_list)
 
         listsViewModel.data.observe(viewLifecycleOwner, {
-            val groupTo = intArrayOf(android.R.id.text1)
-            val childTo = intArrayOf(android.R.id.text1)
+            val groupTo = intArrayOf(R.id.item_group_text)
+            val childTo = intArrayOf(R.id.item_child_text)
             val adapter = SimpleExpandableListAdapter(
                 context,
                 it.group,
-                android.R.layout.simple_expandable_list_item_1,
+                R.layout.item_group,
                 Categories.GROUP_FROM.toTypedArray(),
                 groupTo,
                 it.child,
-                android.R.layout.simple_list_item_1,
+                R.layout.item_child,
                 Categories.CHILD_FROM,
                 childTo
             )
