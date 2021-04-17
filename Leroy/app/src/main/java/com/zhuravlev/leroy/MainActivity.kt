@@ -4,14 +4,19 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.appbar.CollapsingToolbarLayout
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
+    lateinit var navController: NavController
+    lateinit var appBarConfiguration: AppBarConfiguration
+
     lateinit var collapsingToolbarLayout: CollapsingToolbarLayout
     lateinit var searchToolbar: Toolbar
     lateinit var simpleToolbar: Toolbar
@@ -38,8 +43,8 @@ class MainActivity : AppCompatActivity() {
         collapsingToolbarLayout = findViewById(R.id.collapsing_toolbar)
         simpleToolbar = findViewById(R.id.simple_toolbar)
 
-        val navController = findNavController(R.id.nav_host_fragment)
-        val appBarConfiguration = AppBarConfiguration(
+        navController = findNavController(R.id.nav_host_fragment)
+        appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.navigation_home,
                 R.id.navigation_list,
@@ -51,5 +56,9 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(simpleToolbar)
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        return NavigationUI.navigateUp(navController, appBarConfiguration)
     }
 }
