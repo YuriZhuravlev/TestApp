@@ -54,11 +54,15 @@ class ListsFragment : SimpleFragment() {
             childPosition: Int,
             id: Long
         ): Boolean {
-            Toast.makeText(
-                context,
-                "Click [$groupPosition][$childPosition]",
-                Toast.LENGTH_SHORT
-            ).show()
+            listsViewModel.data.value?.let {
+                val from = Categories.CHILD_FROM[0]
+                val text: String = it.child[groupPosition][childPosition][from] ?: ""
+                Toast.makeText(
+                    context,
+                    "Click $text",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
             return true
         }
     }

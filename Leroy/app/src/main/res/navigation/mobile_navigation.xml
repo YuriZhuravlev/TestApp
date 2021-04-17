@@ -8,7 +8,8 @@
     <fragment
         android:id="@+id/navigation_home"
         android:name="com.zhuravlev.leroy.ui.home.HomeFragment"
-        android:label="@string/home">
+        android:label="@string/home"
+        tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_to_tile"
             app:destination="@id/navigation_tile"
@@ -50,10 +51,20 @@
         android:id="@+id/navigation_tile"
         android:name="com.zhuravlev.leroy.ui.tile.TileFragment"
         android:label="@string/catalog"
-        tools:layout="@layout/fragment_catalogs" />
+        tools:layout="@layout/fragment_catalogs">
+        <action
+            android:id="@+id/action_tile_to_lists"
+            app:destination="@id/navigation_lists"
+            app:enterAnim="@anim/fragment_open_enter">
+            <argument
+                android:name="category"
+                android:defaultValue="" />
+        </action>
+    </fragment>
     <fragment
         android:id="@+id/navigation_lists"
-        android:name="com.zhuravlev.leroy.ui.lists.ListsFragment">
+        android:name="com.zhuravlev.leroy.ui.lists.ListsFragment"
+        tools:layout="@layout/fragment_lists">
         <argument
             android:name="category"
             app:argType="string" />

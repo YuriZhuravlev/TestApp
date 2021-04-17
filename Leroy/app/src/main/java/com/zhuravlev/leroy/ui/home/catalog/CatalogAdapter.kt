@@ -49,7 +49,6 @@ open class CatalogAdapter(val list: List<Catalog>) : Adapter<CatalogViewHolder>(
 
                     }
                     Navigation.createNavigateOnClickListener(direction)
-//                    Navigation.createNavigateOnClickListener(R.id.action_to_lists)
                 }
             }
             holder.view.setOnClickListener(clickListener)
