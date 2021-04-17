@@ -27,8 +27,8 @@ class GoodsAdapter(val list: List<Good>) : Adapter<GoodsViewHolder>() {
             if (this.imageUrl.isNotEmpty()) {
                 Picasso.get()
                     .load(this.imageUrl)
-                    .placeholder(R.drawable.ic_list)
-                    .error(R.drawable.ic_list)
+                    .placeholder(R.drawable.ic_load)
+                    .error(R.drawable.ic_load)
                     .into(holder.image)
             }
         }
