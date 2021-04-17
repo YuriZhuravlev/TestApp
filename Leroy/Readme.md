@@ -1,4 +1,11 @@
 ## Главная страница:
+![При загрузке](img/img_1.jpg)
+![Обновление через SwipeRefreshLayout](img/img_2.jpg)
+![Фрагмент с каталогами](img/img_3.jpg)
+![Фрагмент с ExpandableListView](img/img_4.jpg)
+![Раскрытие списка](img/img_5.jpg)
+![Прокрутка](img/img_6.jpg)
+![Ещё раскрывающийся список](img/img_7.jpg)
 
 * Добавлен основной экран
 * Генерация товаров на основе "Lorem Ipsum"
