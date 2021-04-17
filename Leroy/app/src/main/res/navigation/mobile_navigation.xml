@@ -11,10 +11,12 @@
         android:label="@string/home">
         <action
             android:id="@+id/action_to_tile"
-            app:destination="@id/navigation_tile" />
+            app:destination="@id/navigation_tile"
+            app:enterAnim="@anim/fragment_open_enter" />
         <action
             android:id="@+id/action_to_lists"
-            app:destination="@id/listsFragment">
+            app:destination="@id/listsFragment"
+            app:enterAnim="@anim/fragment_open_enter">
             <argument
                 android:name="category"
                 android:defaultValue="" />
