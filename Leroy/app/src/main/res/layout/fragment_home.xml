@@ -17,7 +17,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:listitem="@layout/item_type" />
+            tools:listitem="@layout/item_catalog" />
 
         <TextView
             android:id="@+id/title_block1"

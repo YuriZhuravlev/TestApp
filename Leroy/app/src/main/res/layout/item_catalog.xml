@@ -5,19 +5,19 @@
     android:layout_width="@dimen/size_item"
     android:layout_height="@dimen/size_item"
     android:background="@drawable/background_light"
-    android:layout_margin="@dimen/app_margin"
-    android:padding="@dimen/app_margin">
+    android:layout_margin="@dimen/app_margin">
 
     <TextView
-        android:id="@+id/item_title_type"
+        android:id="@+id/item_title_catalog"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        android:layout_margin="@dimen/app_margin"
         tools:text="Catalog" />
 
     <ImageView
-        android:id="@+id/item_image_type"
+        android:id="@+id/item_image_catalog"
         android:layout_width="@dimen/size_image_type"
         android:layout_height="@dimen/size_image_type"
         app:layout_constraintBottom_toBottomOf="parent"

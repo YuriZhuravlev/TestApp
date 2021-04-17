@@ -8,6 +8,6 @@ import com.zhuravlev.leroy.R
 
 class CatalogViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     val view = itemView
-    val title = itemView.findViewById<TextView>(R.id.item_title_type)
-    val image = itemView.findViewById<ImageView>(R.id.item_image_type)
+    val title = itemView.findViewById<TextView>(R.id.item_title_catalog)
+    val image = itemView.findViewById<ImageView>(R.id.item_image_catalog)
 }

@@ -9,7 +9,7 @@
     android:padding="@dimen/app_margin">
 
     <TextView
-        android:id="@+id/item_title_type"
+        android:id="@+id/item_title_catalog"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -19,7 +19,7 @@
         tools:text="Catalog" />
 
     <ImageView
-        android:id="@+id/item_image_type"
+        android:id="@+id/item_image_catalog"
         android:layout_width="60dp"
         android:layout_height="60dp"
         app:layout_constraintBottom_toBottomOf="parent"

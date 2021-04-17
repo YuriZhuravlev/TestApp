@@ -21,7 +21,7 @@ open class CatalogAdapter(val list: List<Catalog>) : Adapter<CatalogViewHolder>(
         return CatalogViewHolder(
             LayoutInflater.from(parent.context).inflate(
                 if (viewType == COMMON_TYPE) {
-                    R.layout.item_type
+                    R.layout.item_catalog
                 } else {
                     R.layout.item_show_all
                 }, parent, false
