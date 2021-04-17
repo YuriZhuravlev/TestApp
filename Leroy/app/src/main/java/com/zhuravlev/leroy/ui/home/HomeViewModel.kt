@@ -21,14 +21,18 @@ class HomeViewModel : ViewModel() {
     val listGoods1: LiveData<List<Good>> = _listGoods1
     val listGoods2: LiveData<List<Good>> = _listGoods2
 
+    fun refresh() {
+        Repository.getList(20) {
+            _listGoods1.postValue(it)
+        }
+        Repository.getList(15) {
+            _listGoods2.postValue(it)
+        }
+    }
+
     init {
         if (!load) {
-            Repository.getList(20) {
-                _listGoods1.postValue(it)
-            }
-            Repository.getList(15) {
-                _listGoods2.postValue(it)
-            }
+            refresh()
             load = true
         }
     }
