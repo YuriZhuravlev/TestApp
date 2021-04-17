@@ -20,8 +20,8 @@
 
     <ImageView
         android:id="@+id/item_image_catalog"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
+        android:layout_width="@dimen/small_image_size"
+        android:layout_height="@dimen/small_image_size"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

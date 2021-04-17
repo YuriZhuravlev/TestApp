@@ -4,14 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="@dimen/size_item"
     android:layout_height="@dimen/size_item"
-    android:background="@drawable/background_green"
+    android:background="@drawable/background_light"
     android:layout_margin="@dimen/app_margin">
 
     <TextView
         android:id="@+id/item_title_catalog"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_margin="@dimen/app_margin"
@@ -19,11 +18,9 @@
 
     <ImageView
         android:id="@+id/item_image_catalog"
-        android:layout_width="@dimen/small_image_size"
-        android:layout_height="@dimen/small_image_size"
+        android:layout_width="@dimen/size_image_type"
+        android:layout_height="@dimen/size_image_type"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:src="@drawable/ic_list"
-        android:layout_marginEnd="@dimen/app_margin"
-        app:tint="@color/white" />
+        tools:src="@drawable/ic_load" />
 </androidx.constraintlayout.widget.ConstraintLayout>
