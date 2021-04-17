@@ -2,7 +2,7 @@ package com.zhuravlev.leroy.model
 
 import com.zhuravlev.leroy.R
 
-open class Catalog(val title: String, val imageId: Int) {
+class Catalog(val title: String, val imageId: Int) {
 
     companion object {
         fun getList(): List<Catalog> {
