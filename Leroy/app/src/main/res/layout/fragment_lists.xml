@@ -10,8 +10,9 @@
         android:id="@+id/expandable_list"
         tools:listitem="@layout/item_group"
         android:layout_marginTop="@dimen/app_margin"
-        android:layout_marginHorizontal="@dimen/app_margin"
-        android:layout_width="match_parent"
+        android:indicatorLeft="300dp"
+        android:indicatorRight="350dp"
+        android:layout_width="350dp"
+        android:layout_gravity="center"
         android:layout_height="match_parent" />
-
 </LinearLayout>

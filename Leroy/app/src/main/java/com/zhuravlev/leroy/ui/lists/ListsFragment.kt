@@ -31,24 +31,8 @@ class ListsFragment : SimpleFragment() {
         listsViewModel = ViewModelProvider(this).get(ListsViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_lists, container, false)
         val expandableListView: ExpandableListView = root.findViewById(R.id.expandable_list)
-        expandableListView.setOnChildClickListener(object :
-            ExpandableListView.OnChildClickListener {
-            override fun onChildClick(
-                parent: ExpandableListView?,
-                v: View?,
-                groupPosition: Int,
-                childPosition: Int,
-                id: Long
-            ): Boolean {
-                Toast.makeText(
-                    context,
-                    "Click [$groupPosition][$childPosition]",
-                    Toast.LENGTH_SHORT
-                ).show()
-                return true
-            }
-
-        })
+        expandableListView.setOnChildClickListener(childClickListener)
+        expandableListView.setOnGroupClickListener(groupClickListener)
 
         listsViewModel.data.observe(viewLifecycleOwner, {
             context?.let { context ->
@@ -58,5 +42,48 @@ class ListsFragment : SimpleFragment() {
             }
         })
         return root
+    }
+
+    private val childClickListener = object :
+        ExpandableListView.OnChildClickListener {
+        override fun onChildClick(
+            parent: ExpandableListView?,
+            v: View?,
+            groupPosition: Int,
+            childPosition: Int,
+            id: Long
+        ): Boolean {
+            Toast.makeText(
+                context,
+                "Click [$groupPosition][$childPosition]",
+                Toast.LENGTH_SHORT
+            ).show()
+            return true
+        }
+    }
+
+    private val groupClickListener = object :
+        ExpandableListView.OnGroupClickListener {
+        var expandPosition = -1
+        override fun onGroupClick(
+            parent: ExpandableListView?,
+            v: View?,
+            groupPosition: Int,
+            id: Long
+        ): Boolean {
+            requireNotNull(parent) { "parent null" }
+            if (expandPosition != -1) {
+                if (expandPosition == groupPosition) {
+                    parent.collapseGroup(groupPosition)
+                    expandPosition = -1
+                    return true
+                } else {
+                    parent.collapseGroup(expandPosition)
+                }
+            }
+            expandPosition = groupPosition
+            parent.expandGroup(groupPosition, true)
+            return true
+        }
     }
 }
