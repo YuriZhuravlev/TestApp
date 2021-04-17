@@ -29,6 +29,7 @@ class ListsFragment : SimpleFragment() {
         }
 
         listsViewModel = ViewModelProvider(this).get(ListsViewModel::class.java)
+        listsViewModel.setCategory(category)
         val root = inflater.inflate(R.layout.fragment_lists, container, false)
         val expandableListView: ExpandableListView = root.findViewById(R.id.expandable_list)
         expandableListView.setOnChildClickListener(childClickListener)

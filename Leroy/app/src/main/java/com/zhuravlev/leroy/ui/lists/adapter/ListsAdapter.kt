@@ -9,6 +9,7 @@ import android.widget.TextView
 import com.zhuravlev.leroy.R
 import com.zhuravlev.leroy.repository.Categories
 
+// Да, вероятнее всего стоило делать это с помощью RecyclerView
 class ListsAdapter(
     private val context: Context,
     private val categories: Categories,

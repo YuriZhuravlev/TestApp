@@ -15,7 +15,7 @@
             app:enterAnim="@anim/fragment_open_enter" />
         <action
             android:id="@+id/action_to_lists"
-            app:destination="@id/listsFragment"
+            app:destination="@id/navigation_lists"
             app:enterAnim="@anim/fragment_open_enter">
             <argument
                 android:name="category"
@@ -52,7 +52,7 @@
         android:label="@string/catalog"
         tools:layout="@layout/fragment_catalogs" />
     <fragment
-        android:id="@+id/listsFragment"
+        android:id="@+id/navigation_lists"
         android:name="com.zhuravlev.leroy.ui.lists.ListsFragment">
         <argument
             android:name="category"

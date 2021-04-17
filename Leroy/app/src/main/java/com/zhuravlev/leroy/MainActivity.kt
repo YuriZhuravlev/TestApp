@@ -23,13 +23,10 @@ class MainActivity : AppCompatActivity() {
                 collapsingToolbarLayout.visibility = View.GONE
                 simpleToolbar.visibility = View.VISIBLE
                 activeSearchToolbar = false
-//                simpleToolbar.title = this.searchToolbar.title
-//                setSupportActionBar(simpleToolbar)
             } else {
                 simpleToolbar.visibility = View.GONE
                 collapsingToolbarLayout.visibility = View.VISIBLE
                 activeSearchToolbar = true
-//                setSupportActionBar(this.searchToolbar)
             }
         }
     }
@@ -39,12 +36,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         val navView: BottomNavigationView = findViewById(R.id.nav_view)
         collapsingToolbarLayout = findViewById(R.id.collapsing_toolbar)
-//        searchToolbar = findViewById(R.id.search_toolbar)
         simpleToolbar = findViewById(R.id.simple_toolbar)
 
         val navController = findNavController(R.id.nav_host_fragment)
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
         val appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.navigation_home,
@@ -55,7 +49,6 @@ class MainActivity : AppCompatActivity() {
             )
         )
         setSupportActionBar(simpleToolbar)
-        //switchToolbar(activeSearchToolbar)
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
     }
