@@ -1,51 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_gravity="fill"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_gravity="fill">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/app_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="top"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+        android:layout_gravity="top">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            android:text="город и qr"
-            android:background="@color/red_light"/>
+            android:background="@color/red_light"
+            android:text="город и qr" />
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
             android:id="@+id/collapsing_toolbar"
             android:layout_width="match_parent"
-            android:layout_height="192dp"
+            android:layout_height="140dp"
             app:layout_scrollFlags="snap|scroll|exitUntilCollapsed">
 
-            <TextView
+            <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"
                 android:layout_height="92dp"
                 android:layout_gravity="top"
-                android:text="баннеры скрываются"/>
-            <TextView
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/item_banner" />
+
+            <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
+                android:layout_height="48dp"
                 android:layout_gravity="bottom"
-                android:text="список категорий"
-                android:background="@color/design_default_color_primary_dark"
-                app:layout_collapseMode="pin"/>
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_collapseMode="pin"
+                tools:listitem="@layout/item_category" />
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-
         android:layout_marginTop="@dimen/app_margin"
-        tools:listitem="@layout/item_dish"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        tools:listitem="@layout/item_dish" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

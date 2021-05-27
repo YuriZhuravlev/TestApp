@@ -3,7 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/TestApp/FoodViewer/app/src/main/res/drawable/background_categor.xml" value="0.3828125" />
+        <entry key="..\:/TestApp/FoodViewer/app/src/main/res/drawable/background_category.xml" value="0.3828125" />
         <entry key="..\:/TestApp/FoodViewer/app/src/main/res/drawable/background_price.xml" value="0.3828125" />
+        <entry key="..\:/TestApp/FoodViewer/app/src/main/res/drawable/background_selected_category.xml" value="0.3828125" />
         <entry key="..\:/TestApp/FoodViewer/app/src/main/res/drawable/ic_profile.xml" value="0.22135416666666666" />
         <entry key="..\:/TestApp/FoodViewer/app/src/main/res/layout/activity_main.xml" value="0.20520833333333333" />
         <entry key="..\:/TestApp/FoodViewer/app/src/main/res/layout/fragment_dashboard.xml" value="0.20520833333333333" />
@@ -11,6 +14,7 @@
         <entry key="..\:/TestApp/FoodViewer/app/src/main/res/layout/fragment_menu.xml" value="0.36102564102564105" />
         <entry key="..\:/TestApp/FoodViewer/app/src/main/res/layout/fragment_notifications.xml" value="0.20520833333333333" />
         <entry key="..\:/TestApp/FoodViewer/app/src/main/res/layout/fragment_profile.xml" value="0.20520833333333333" />
+        <entry key="..\:/TestApp/FoodViewer/app/src/main/res/layout/item_category.xml" value="0.36666666666666664" />
         <entry key="..\:/TestApp/FoodViewer/app/src/main/res/layout/item_dish.xml" value="0.36666666666666664" />
         <entry key="..\:/TestApp/FoodViewer/app/src/main/res/menu/bottom_nav_menu.xml" value="0.20520833333333333" />
         <entry key="..\:/TestApp/app/src/main/res/layout/activity_main.xml" value="0.2957427536231884" />
