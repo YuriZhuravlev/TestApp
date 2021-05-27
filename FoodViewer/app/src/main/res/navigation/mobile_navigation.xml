@@ -3,23 +3,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_home">
+    app:startDestination="@+id/navigation_menu">
 
     <fragment
-        android:id="@+id/navigation_home"
-        android:name="com.zhuravlev.foodviewer.ui.home.HomeFragment"
+        android:id="@+id/navigation_menu"
+        android:name="com.zhuravlev.foodviewer.ui.menu.MenuFragment"
         android:label="@string/title_menu"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_menu" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.zhuravlev.foodviewer.ui.dashboard.DashboardFragment"
+        android:id="@+id/navigation_profile"
+        android:name="com.zhuravlev.foodviewer.ui.profile.ProfileFragment"
         android:label="@string/title_profile"
-        tools:layout="@layout/fragment_dashboard" />
+        tools:layout="@layout/fragment_profile" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.zhuravlev.foodviewer.ui.notifications.NotificationsFragment"
+        android:id="@+id/navigation_basket"
+        android:name="com.zhuravlev.foodviewer.ui.basket.BasketFragment"
         android:label="@string/title_basket"
-        tools:layout="@layout/fragment_notifications" />
+        tools:layout="@layout/fragment_basket" />
 </navigation>

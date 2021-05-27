@@ -1,4 +1,4 @@
-package com.zhuravlev.foodviewer.ui.dashboard
+package com.zhuravlev.foodviewer.ui.profile
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,13 +8,12 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.zhuravlev.foodviewer.R
-import com.zhuravlev.foodviewer.databinding.FragmentDashboardBinding
+import com.zhuravlev.foodviewer.databinding.FragmentProfileBinding
 
-class DashboardFragment : Fragment() {
+class ProfileFragment : Fragment() {
 
-    private lateinit var dashboardViewModel: DashboardViewModel
-    private var _binding: FragmentDashboardBinding? = null
+    private lateinit var dashboardViewModel: ProfileViewModel
+    private var _binding: FragmentProfileBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -26,12 +25,12 @@ class DashboardFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         dashboardViewModel =
-            ViewModelProvider(this).get(DashboardViewModel::class.java)
+            ViewModelProvider(this).get(ProfileViewModel::class.java)
 
-        _binding = FragmentDashboardBinding.inflate(inflater, container, false)
+        _binding = FragmentProfileBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textDashboard
+        val textView: TextView = binding.textProfile
         dashboardViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
