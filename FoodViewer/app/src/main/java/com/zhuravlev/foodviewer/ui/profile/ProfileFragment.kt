@@ -5,12 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.zhuravlev.foodviewer.databinding.FragmentProfileBinding
+import com.zhuravlev.foodviewer.ui.common.DefaultFragment
 
-class ProfileFragment : Fragment() {
+class ProfileFragment : DefaultFragment() {
 
     private lateinit var dashboardViewModel: ProfileViewModel
     private var _binding: FragmentProfileBinding? = null

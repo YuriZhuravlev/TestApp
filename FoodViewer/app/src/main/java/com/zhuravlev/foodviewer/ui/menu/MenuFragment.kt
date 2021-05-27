@@ -5,12 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.zhuravlev.foodviewer.databinding.FragmentMenuBinding
+import com.zhuravlev.foodviewer.ui.common.CustomToolbarFragment
 
-class MenuFragment : Fragment() {
+class MenuFragment : CustomToolbarFragment() {
 
     private lateinit var homeViewModel: MenuViewModel
     private var _binding: FragmentMenuBinding? = null
