@@ -30,6 +30,19 @@ class MenuFragment : CustomToolbarFragment() {
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
+    private val spinnerListener = object : AdapterView.OnItemSelectedListener {
+        override fun onItemSelected(
+            parent: AdapterView<*>?,
+            view: View?,
+            position: Int,
+            id: Long
+        ) {
+            menuViewModel.selectedLocation(position)
+        }
+
+        override fun onNothingSelected(parent: AdapterView<*>?) {
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -47,31 +60,13 @@ class MenuFragment : CustomToolbarFragment() {
         val dishAdapter = DishAdapter()
         menuDishes.adapter = dishAdapter
 
-        spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(
-                parent: AdapterView<*>?,
-                view: View?,
-                position: Int,
-                id: Long
-            ) {
-                menuViewModel.selectedLocation(position)
-            }
-
-            override fun onNothingSelected(parent: AdapterView<*>?) {
-            }
-
-        }
         launchTask {
             menuViewModel.dishesList.collect {
                 dishAdapter.updateAdapter(it)
             }
         }
 
-        launchTask {
-            menuViewModel.locationList.collect {
-                spinner.adapter = locationAdapter(requireContext(), it)
-            }
-        }
+        locationInit()
 
         launchTask {
             menuViewModel.categoryList.collect {
@@ -80,6 +75,26 @@ class MenuFragment : CustomToolbarFragment() {
         }
 
         return binding.root
+    }
+
+    private fun locationInit() {
+        launchTask {
+            menuViewModel.locationList.collect {
+                if (!it.isNullOrEmpty()) {
+                    spinner.onItemSelectedListener = null
+                    spinner.adapter = locationAdapter(requireContext(), it)
+                    var select = 0
+                    for (i: Int in 0..(it.lastIndex)) {
+                        if (it[i].selected) {
+                            select = i
+                            break
+                        }
+                    }
+                    spinner.setSelection(select)
+                    spinner.onItemSelectedListener = spinnerListener
+                }
+            }
+        }
     }
 
     private fun launchTask(task: suspend () -> Unit) {

@@ -5,36 +5,41 @@ import com.zhuravlev.foodviewer.database.LocationDAO
 import com.zhuravlev.foodviewer.model.Location
 import com.zhuravlev.foodviewer.net.NetworkService
 
-class UseCaseLocationImpl (
+class UseCaseLocationImpl(
     private val dishDAO: DishDAO,
     private val locationDAO: LocationDAO,
     private val networkService: NetworkService
 ) : UseCaseLocation {
     private var currentLocation: Location? = null
-
     override fun getAllLocations(): List<Location> {
-        val all = locationDAO.getAll()
+        var all = locationDAO.getAll()
+        if (all.isEmpty()) {
+            all = networkService.getLocations()
+        }
         if (currentLocation == null) {
-            currentLocation = all.findLast { it.selected } ?: all.first()
+            currentLocation = all.findLast { it.selected }
         }
         return all
     }
 
     override fun getLocation(): Location {
-        return if (currentLocation == null) {
-            val locations = networkService.getLocations()
-            locationDAO.insertLocations(locations)
-            currentLocation = locations[0].copy(selected = true)
-            setLocation(currentLocation!!)
-            currentLocation!!
-        } else {
+        return currentLocation ?: let {
+            val all = getAllLocations()
+            if (currentLocation == null) {
+                setLocation(all.first())
+            }
             currentLocation!!
         }
     }
 
     override fun setLocation(location: Location): Boolean {
+        if (location == currentLocation) {
+            return true
+        }
         return try {
-            locationDAO.updateLocationById(currentLocation!!.copy(selected = false))
+            currentLocation?.let {
+                locationDAO.updateLocationById(it.copy(selected = false))
+            }
             currentLocation = location.copy(selected = true)
             locationDAO.updateLocationById(currentLocation!!)
             dishDAO.clearAll()
@@ -45,4 +50,42 @@ class UseCaseLocationImpl (
             false
         }
     }
+
+
+//    override fun getAllLocations(): List<Location> {
+//        var all = locationDAO.getAll()
+//        if (all.isEmpty()) {
+//            all = networkService.getLocations()
+//        }
+//        if (currentLocation == null) {
+//            currentLocation = all.findLast { it.selected } ?: all.first()
+//        }
+//        return all
+//    }
+//
+//    override fun getLocation(): Location {
+//        return if (currentLocation == null) {
+//            getAllLocations()
+//            currentLocation!!
+//        } else {
+//            currentLocation!!
+//        }
+//    }
+//
+//    override fun setLocation(location: Location): Boolean {
+//        return try {
+//            if (location == currentLocation) {
+//                return true
+//            }
+//            locationDAO.updateLocationById(currentLocation!!.copy(selected = false))
+//            currentLocation = location.copy(selected = true)
+//            locationDAO.updateLocationById(currentLocation!!)
+//            dishDAO.clearAll()
+//            dishDAO.insertDishes(networkService.getMenuByLocations(currentLocation!!))
+//            true
+//        } catch (e: Exception) {
+//            e.printStackTrace()
+//            false
+//        }
+//    }
 }
