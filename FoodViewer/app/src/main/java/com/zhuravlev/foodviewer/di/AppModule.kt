@@ -32,8 +32,7 @@ object AppModule {
         context,
         Database::class.java,
         "food_db"
-    ).addTypeConverter(CategoryConverter)
-        .build()
+    ).build()
 
     @Singleton
     @Provides

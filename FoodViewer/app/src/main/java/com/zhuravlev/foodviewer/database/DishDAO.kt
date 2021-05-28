@@ -3,6 +3,8 @@ package com.zhuravlev.foodviewer.database
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
+import androidx.room.TypeConverters
+import com.zhuravlev.foodviewer.model.CategoryConverter
 import com.zhuravlev.foodviewer.model.Dish
 
 @Dao

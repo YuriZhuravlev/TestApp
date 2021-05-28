@@ -7,7 +7,7 @@ import com.zhuravlev.foodviewer.net.NetworkService
 import com.zhuravlev.foodviewer.repository.location.UseCaseLocation
 import javax.inject.Inject
 
-class UseCaseDishesImpl @Inject constructor(
+class UseCaseDishesImpl (
     private val dishDAO: DishDAO,
     private val useCaseLocation: UseCaseLocation,
     private val networkService: NetworkService

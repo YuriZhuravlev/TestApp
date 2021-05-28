@@ -15,7 +15,7 @@ interface LocationDAO {
     fun getCurrentLocation(): Location
 
     @Update
-    fun updateLocationById(id: String, location: Location)
+    fun updateLocationById(location: Location)
 
     @Insert
     fun insertLocations(list: List<Location>)

@@ -6,7 +6,7 @@ import com.zhuravlev.foodviewer.model.Location
 import com.zhuravlev.foodviewer.net.NetworkService
 import javax.inject.Inject
 
-class UseCaseLocationImpl @Inject constructor(
+class UseCaseLocationImpl (
     private val dishDAO: DishDAO,
     private val locationDAO: LocationDAO,
     private val networkService: NetworkService
@@ -31,12 +31,9 @@ class UseCaseLocationImpl @Inject constructor(
 
     override fun setLocation(location: Location): Boolean {
         return try {
-            locationDAO.updateLocationById(
-                currentLocation!!.id,
-                currentLocation!!.copy(selected = false)
-            )
+            locationDAO.updateLocationById(currentLocation!!.copy(selected = false))
             currentLocation = location.copy(selected = true)
-            locationDAO.updateLocationById(currentLocation!!.id, currentLocation!!)
+            locationDAO.updateLocationById(currentLocation!!)
             dishDAO.clearAll()
             dishDAO.insertDishes(networkService.getMenuByLocations(currentLocation!!))
             true

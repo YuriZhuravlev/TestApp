@@ -13,10 +13,32 @@ enum class Category(val order: Int) {
 }
 
 @ProvidedTypeConverter
-object CategoryConverter {
-    @TypeConverter
-    fun toCategory(value: Int) = enumValues<Category>()[value]
+class CategoryConverter {
+    companion object {
+        @TypeConverter
+        @JvmStatic
+        fun toCategory(value: String): Category = Category.valueOf(value)
 
-    @TypeConverter
-    fun fromCategory(value: Category) = value.ordinal
+        @TypeConverter
+        @JvmStatic
+        fun fromCategory(value: Category): String = value.name
+    }
 }
+/*
+@ProvidedTypeConverter
+class Converters {
+    companion object {
+        @TypeConverter
+        @JvmStatic
+        fun fromTimestamp(value: Long?): Date? {
+            return value?.let { Date(it) }
+        }
+
+        @TypeConverter
+        @JvmStatic
+        fun dateToTimestamp(date: Date?): Long? {
+            return date?.time
+        }
+    }
+}
+ */

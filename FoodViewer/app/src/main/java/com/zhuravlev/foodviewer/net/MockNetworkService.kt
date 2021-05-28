@@ -3,6 +3,7 @@ package com.zhuravlev.foodviewer.net
 import com.zhuravlev.foodviewer.model.Category
 import com.zhuravlev.foodviewer.model.Dish
 import com.zhuravlev.foodviewer.model.Location
+import javax.inject.Inject
 
 class MockNetworkService : NetworkService {
     override fun getLocations(): List<Location> {
