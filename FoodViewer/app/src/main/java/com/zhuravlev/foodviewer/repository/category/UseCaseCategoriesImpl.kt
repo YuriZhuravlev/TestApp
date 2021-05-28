@@ -7,7 +7,10 @@ import com.zhuravlev.foodviewer.model.Dish
 import com.zhuravlev.foodviewer.net.NetworkService
 import javax.inject.Inject
 
-class UseCaseCategoriesImpl @Inject constructor(private val dishDAO: DishDAO, private val locationDAO: LocationDAO,private val networkService: NetworkService): UseCaseCategories {
+class UseCaseCategoriesImpl @Inject constructor(
+    private val dishDAO: DishDAO,
+    private val locationDAO: LocationDAO,
+    private val networkService: NetworkService): UseCaseCategories {
     override fun getCategories(): List<Category> {
         val dishes = dishDAO.getAll()
         return if (dishes.isEmpty()) {
