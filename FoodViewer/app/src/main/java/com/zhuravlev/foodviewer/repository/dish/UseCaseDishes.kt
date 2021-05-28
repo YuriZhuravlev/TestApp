@@ -4,5 +4,5 @@ import com.zhuravlev.foodviewer.model.Dish
 
 interface UseCaseDishes {
     fun getDishes(): List<Dish>
-    fun getDishById(): Dish
+    fun getDishById(id: String): Dish
 }

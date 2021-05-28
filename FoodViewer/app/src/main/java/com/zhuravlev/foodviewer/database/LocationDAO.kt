@@ -12,7 +12,7 @@ interface LocationDAO {
     fun getAll(): List<Location>
 
     @Query("SELECT * FROM location WHERE selected = 1")
-    fun getCurrentLocation()
+    fun getCurrentLocation(): Location
 
     @Update
     fun updateLocationById(id: String, location: Location)

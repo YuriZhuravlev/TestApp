@@ -6,6 +6,10 @@ import com.zhuravlev.foodviewer.database.Database
 import com.zhuravlev.foodviewer.database.DishDAO
 import com.zhuravlev.foodviewer.database.LocationDAO
 import com.zhuravlev.foodviewer.model.CategoryConverter
+import com.zhuravlev.foodviewer.net.MockNetworkService
+import com.zhuravlev.foodviewer.net.NetworkService
+import com.zhuravlev.foodviewer.repository.category.UseCaseCategories
+import com.zhuravlev.foodviewer.repository.category.UseCaseCategoriesImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -35,4 +39,15 @@ object AppModule {
     @Singleton
     @Provides
     fun provideLocationDAO(db: Database): LocationDAO = db.getLocationDAO()
+
+    @Singleton
+    @Provides
+    fun provideNetworkService(): NetworkService = MockNetworkService()
+
+    @Provides
+    fun provideUseCaseCategories(
+        dishDAO: DishDAO,
+        locationDAO: LocationDAO,
+        networkService: NetworkService
+    ): UseCaseCategories = UseCaseCategoriesImpl(dishDAO, locationDAO, networkService)
 }

@@ -5,5 +5,5 @@ import com.zhuravlev.foodviewer.model.Location
 interface UseCaseLocation {
     fun getAllLocations(): List<Location>
     fun getLocation(): Location
-    fun setLocation(): Boolean
+    fun setLocation(location: Location): Boolean
 }
