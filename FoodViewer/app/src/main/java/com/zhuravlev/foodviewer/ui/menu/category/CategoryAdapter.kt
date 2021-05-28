@@ -9,10 +9,19 @@ import com.squareup.picasso.Picasso
 import com.zhuravlev.foodviewer.R
 import com.zhuravlev.foodviewer.model.Category
 import com.zhuravlev.foodviewer.ui.menu.dishes.DishViewHolder
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.currentCoroutineContext
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.launch
+import kotlin.coroutines.coroutineContext
 
 class CategoryAdapter : RecyclerView.Adapter<CategoryViewHolder>() {
-    var list = listOf<Category>()
-    var selected: View? = null
+    private var list = listOf<Category>()
+    private var selectedIndex = 0
+    private val _selectedFlow = MutableStateFlow<Category?>(null)
+    val selectedFlow: StateFlow<Category?> = _selectedFlow
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoryViewHolder {
         return CategoryViewHolder(
@@ -22,19 +31,34 @@ class CategoryAdapter : RecyclerView.Adapter<CategoryViewHolder>() {
 
     override fun onBindViewHolder(holder: CategoryViewHolder, position: Int) {
         // TODO LOCAL
-        if (selected == null && position == 0) {
-            selected = holder.view
-            holder.view.isSelected = true
-        }
+        holder.view.isSelected = (position == selectedIndex)
+
         holder.view.setOnClickListener {
             // TODO send message to MenuViewModel
-            if (!holder.view.isSelected) {
-                holder.view.isSelected = true
-                selected?.isSelected = false
-                selected = holder.view
+            if (position != selectedIndex) {
+                select(position)
             }
         }
         holder.text.text = list[position].name
+    }
+
+    private fun select(position: Int) {
+        val oldItemPosition = selectedIndex
+        selectedIndex = position
+        notifyItemChanged(oldItemPosition)
+        notifyItemChanged(selectedIndex)
+        // не отслеживается, не отменяется
+        GlobalScope.launch {
+            _selectedFlow.emit(list[position])
+        }
+    }
+
+    fun getCurrentCategory(): Category = list[selectedIndex]
+
+    fun setSelectCategory(category: Category) {
+        if (category != getCurrentCategory()) {
+            select(category.ordinal)
+        }
     }
 
     override fun getItemCount(): Int = list.size

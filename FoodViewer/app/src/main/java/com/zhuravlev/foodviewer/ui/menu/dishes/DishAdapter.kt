@@ -6,10 +6,11 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import com.zhuravlev.foodviewer.R
+import com.zhuravlev.foodviewer.model.Category
 import com.zhuravlev.foodviewer.model.Dish
 
 class DishAdapter : RecyclerView.Adapter<DishViewHolder>() {
-    var list = listOf<Dish>()
+    private var list = listOf<Dish>()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DishViewHolder {
         return DishViewHolder(
             LayoutInflater.from(parent.context).inflate(R.layout.item_dish, parent, false)
@@ -28,6 +29,8 @@ class DishAdapter : RecyclerView.Adapter<DishViewHolder>() {
         }
     }
 
+    fun getCategory(position: Int): Category = list[position].category
+
     override fun getItemCount(): Int = list.size
 
     fun updateAdapter(newList: List<Dish>) {
@@ -37,7 +40,17 @@ class DishAdapter : RecyclerView.Adapter<DishViewHolder>() {
         result.dispatchUpdatesTo(this)
     }
 
-    private class DiffUtilCallback(val oldList: List<Dish>, val newList: List<Dish>) : DiffUtil.Callback() {
+    fun getPosition(category: Category): Int {
+        list.forEachIndexed { index, dish ->
+            if (dish.category == category) {
+                return index
+            }
+        }
+        return -1
+    }
+
+    private class DiffUtilCallback(val oldList: List<Dish>, val newList: List<Dish>) :
+        DiffUtil.Callback() {
         override fun getOldListSize(): Int = oldList.size
 
         override fun getNewListSize(): Int = newList.size

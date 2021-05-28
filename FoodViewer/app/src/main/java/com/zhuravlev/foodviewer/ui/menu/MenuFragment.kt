@@ -10,11 +10,15 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.zhuravlev.foodviewer.R
 import com.zhuravlev.foodviewer.databinding.FragmentMenuBinding
+import com.zhuravlev.foodviewer.model.Category
 import com.zhuravlev.foodviewer.ui.common.CustomToolbarFragment
 import com.zhuravlev.foodviewer.ui.menu.category.CategoryAdapter
 import com.zhuravlev.foodviewer.ui.menu.dishes.DishAdapter
+import com.zhuravlev.foodviewer.ui.menu.dishes.DishViewHolder
 import com.zhuravlev.foodviewer.ui.menu.spinner.locationAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
@@ -50,34 +54,60 @@ class MenuFragment : CustomToolbarFragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentMenuBinding.inflate(inflater, container, false)
-        spinner = _binding!!.root.findViewById(R.id.location_spinner)
 
+        locationInit()
+        menuInit()
+
+        return binding.root
+    }
+
+    private fun menuInit() {
         val categoryRecycler = _binding!!.menuCategory
-        val categoryAdapter = CategoryAdapter()
-        categoryRecycler.adapter = categoryAdapter
-
         val menuDishes = _binding!!.menuDishes
+        val categoryAdapter = CategoryAdapter()
         val dishAdapter = DishAdapter()
+
+        categoryRecycler.adapter = categoryAdapter
         menuDishes.adapter = dishAdapter
+
+        // Установка взаимодействия между категориями и текущим элементом списка меню TODO надо будет вынести хотя бы в ViewModel
+        var currentCategory = Category.PIZZA
+
+        val layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+        menuDishes.layoutManager = layoutManager
+        menuDishes.addOnScrollListener(object: RecyclerView.OnScrollListener() {
+            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                currentCategory = dishAdapter.getCategory(layoutManager.findFirstVisibleItemPosition())
+                categoryAdapter.setSelectCategory(currentCategory)
+                super.onScrollStateChanged(recyclerView, newState)
+            }
+        })
+        launchTask {
+            categoryAdapter.selectedFlow.collect {
+                it?.let {
+                    if (it != currentCategory) {
+                        layoutManager.scrollToPositionWithOffset(dishAdapter.getPosition(it) , 0)
+                    }
+                }
+            }
+        }
+        // /////////////////////
 
         launchTask {
             menuViewModel.dishesList.collect {
                 dishAdapter.updateAdapter(it)
             }
         }
-
-        locationInit()
-
         launchTask {
             menuViewModel.categoryList.collect {
                 categoryAdapter.updateAdapter(it)
             }
         }
-
-        return binding.root
     }
 
     private fun locationInit() {
+        spinner = _binding!!.root.findViewById(R.id.location_spinner)
+
         launchTask {
             menuViewModel.locationList.collect {
                 if (!it.isNullOrEmpty()) {
