@@ -5,14 +5,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.zhuravlev.foodviewer.databinding.FragmentProfileBinding
 import com.zhuravlev.foodviewer.ui.common.DefaultFragment
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class ProfileFragment : DefaultFragment() {
 
-    private lateinit var dashboardViewModel: ProfileViewModel
+    private val dashboardViewModel: ProfileViewModel by viewModels()
     private var _binding: FragmentProfileBinding? = null
 
     // This property is only valid between onCreateView and
@@ -24,8 +28,8 @@ class ProfileFragment : DefaultFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        dashboardViewModel =
-            ViewModelProvider(this).get(ProfileViewModel::class.java)
+//        dashboardViewModel =
+//            ViewModelProvider(this).get(ProfileViewModel::class.java)
 
         _binding = FragmentProfileBinding.inflate(inflater, container, false)
         val root: View = binding.root
