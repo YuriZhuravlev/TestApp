@@ -15,9 +15,10 @@ class UseCaseLocationImpl(
         var all = locationDAO.getAll()
         if (all.isEmpty()) {
             all = networkService.getLocations()
+            locationDAO.insertLocations(all)
         }
         if (currentLocation == null) {
-            currentLocation = all.findLast { it.selected }
+            setLocation(all.findLast { it.selected } ?: all[0])
         }
         return all
     }
