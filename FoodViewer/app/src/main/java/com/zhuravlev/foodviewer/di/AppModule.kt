@@ -10,6 +10,10 @@ import com.zhuravlev.foodviewer.net.MockNetworkService
 import com.zhuravlev.foodviewer.net.NetworkService
 import com.zhuravlev.foodviewer.repository.category.UseCaseCategories
 import com.zhuravlev.foodviewer.repository.category.UseCaseCategoriesImpl
+import com.zhuravlev.foodviewer.repository.dish.UseCaseDishes
+import com.zhuravlev.foodviewer.repository.dish.UseCaseDishesImpl
+import com.zhuravlev.foodviewer.repository.location.UseCaseLocation
+import com.zhuravlev.foodviewer.repository.location.UseCaseLocationImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -45,9 +49,23 @@ object AppModule {
     fun provideNetworkService(): NetworkService = MockNetworkService()
 
     @Provides
-    fun provideUseCaseCategories(
+    fun provideUseCaseLocation(
         dishDAO: DishDAO,
         locationDAO: LocationDAO,
         networkService: NetworkService
-    ): UseCaseCategories = UseCaseCategoriesImpl(dishDAO, locationDAO, networkService)
+    ): UseCaseLocation = UseCaseLocationImpl(dishDAO, locationDAO, networkService)
+
+    @Provides
+    fun provideUseCaseCategories(
+        dishDAO: DishDAO,
+        useCaseLocation: UseCaseLocation,
+        networkService: NetworkService
+    ): UseCaseCategories = UseCaseCategoriesImpl(dishDAO, useCaseLocation, networkService)
+
+    @Provides
+    fun provideUseCaseDishes(
+        dishDAO: DishDAO,
+        useCaseLocation: UseCaseLocation,
+        networkService: NetworkService
+    ): UseCaseDishes = UseCaseDishesImpl(dishDAO, useCaseLocation, networkService)
 }
