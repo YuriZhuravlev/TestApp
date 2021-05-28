@@ -25,6 +25,6 @@ class UseCaseCategoriesImpl (
 
 }
 
-private fun List<Dish>.getCategories(): List<Category> {
+fun List<Dish>.getCategories(): List<Category> {
     return this.groupBy { it.category }.keys.toList().sortedBy { it.order }
 }

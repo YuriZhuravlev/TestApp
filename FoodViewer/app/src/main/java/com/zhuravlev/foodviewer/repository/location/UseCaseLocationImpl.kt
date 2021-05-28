@@ -4,7 +4,6 @@ import com.zhuravlev.foodviewer.database.DishDAO
 import com.zhuravlev.foodviewer.database.LocationDAO
 import com.zhuravlev.foodviewer.model.Location
 import com.zhuravlev.foodviewer.net.NetworkService
-import javax.inject.Inject
 
 class UseCaseLocationImpl (
     private val dishDAO: DishDAO,
@@ -14,7 +13,11 @@ class UseCaseLocationImpl (
     private var currentLocation: Location? = null
 
     override fun getAllLocations(): List<Location> {
-        return locationDAO.getAll()
+        val all = locationDAO.getAll()
+        if (currentLocation == null) {
+            currentLocation = all.findLast { it.selected } ?: all.first()
+        }
+        return all
     }
 
     override fun getLocation(): Location {

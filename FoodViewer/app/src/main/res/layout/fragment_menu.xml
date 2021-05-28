@@ -22,6 +22,7 @@
             app:layout_scrollFlags="snap|scroll|exitUntilCollapsed">
 
             <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/menu_banner"
                 android:layout_width="match_parent"
                 android:layout_height="92dp"
                 android:layout_gravity="top"
@@ -30,6 +31,7 @@
                 tools:listitem="@layout/item_banner" />
 
             <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/menu_category"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_gravity="bottom"
