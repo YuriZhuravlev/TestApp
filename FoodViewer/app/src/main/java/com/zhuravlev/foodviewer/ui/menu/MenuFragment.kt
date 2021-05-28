@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
-import android.widget.ArrayAdapter
 import androidx.appcompat.widget.AppCompatSpinner
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
@@ -14,6 +13,7 @@ import androidx.lifecycle.repeatOnLifecycle
 import com.zhuravlev.foodviewer.R
 import com.zhuravlev.foodviewer.databinding.FragmentMenuBinding
 import com.zhuravlev.foodviewer.ui.common.CustomToolbarFragment
+import com.zhuravlev.foodviewer.ui.menu.category.CategoryAdapter
 import com.zhuravlev.foodviewer.ui.menu.dishes.DishAdapter
 import com.zhuravlev.foodviewer.ui.menu.spinner.locationAdapter
 import dagger.hilt.android.AndroidEntryPoint
@@ -35,9 +35,13 @@ class MenuFragment : CustomToolbarFragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentMenuBinding.inflate(inflater, container, false)
         spinner = _binding!!.root.findViewById(R.id.location_spinner)
+
+        val categoryRecycler = _binding!!.menuCategory
+        val categoryAdapter = CategoryAdapter()
+        categoryRecycler.adapter = categoryAdapter
 
         val menuDishes = _binding!!.menuDishes
         val dishAdapter = DishAdapter()
@@ -66,6 +70,12 @@ class MenuFragment : CustomToolbarFragment() {
         launchTask {
             menuViewModel.locationList.collect {
                 spinner.adapter = locationAdapter(requireContext(), it)
+            }
+        }
+
+        launchTask {
+            menuViewModel.categoryList.collect {
+                categoryAdapter.updateAdapter(it)
             }
         }
 

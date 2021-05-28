@@ -4,7 +4,7 @@
     android:layout_height="32dp"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_margin="@dimen/small_margin"
-    android:background="@drawable/background_unselected_category"
+    android:background="@drawable/background_category"
     android:elevation="4dp">
 
     <TextView
