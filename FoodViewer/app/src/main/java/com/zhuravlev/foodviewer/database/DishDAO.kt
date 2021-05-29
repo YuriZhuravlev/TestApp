@@ -1,9 +1,7 @@
 package com.zhuravlev.foodviewer.database
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.Query
-import androidx.room.TypeConverters
+import androidx.room.*
+import com.google.android.material.circularreveal.CircularRevealHelper
 import com.zhuravlev.foodviewer.model.CategoryConverter
 import com.zhuravlev.foodviewer.model.Dish
 
@@ -12,7 +10,7 @@ interface DishDAO {
     @Query("SELECT * FROM dish")
     fun getAll(): List<Dish>
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertDishes(list: List<Dish>)
 
     @Query("DELETE FROM dish")
