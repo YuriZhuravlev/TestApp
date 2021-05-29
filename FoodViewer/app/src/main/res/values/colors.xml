@@ -10,10 +10,12 @@
     <color name="teal_700">#FF018786</color>
     <color name="gray_100">#FFFAFAFA</color>
     <color name="gray_300">#FFE0E0E0</color>
+    <color name="gray_600">#FF757575</color>
     <color name="gray_900">#FF212121</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
     <color name="title_color">@color/black</color>
     <color name="background_color">@color/gray_100</color>
+    <color name="selected_color">@color/red_light</color>
 </resources>
