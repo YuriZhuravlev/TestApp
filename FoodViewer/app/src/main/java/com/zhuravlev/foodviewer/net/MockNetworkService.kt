@@ -1,5 +1,6 @@
 package com.zhuravlev.foodviewer.net
 
+import com.zhuravlev.foodviewer.model.Banner
 import com.zhuravlev.foodviewer.model.Category
 import com.zhuravlev.foodviewer.model.Dish
 import com.zhuravlev.foodviewer.model.Location
@@ -94,6 +95,16 @@ class MockNetworkService : NetworkService {
                 Category.DRINK,
                 "https://eda-land.ru/images/article/orig/2018/06/kofe-bez-kofeina-poleznye-svojstva-i-protivopokazaniya.jpg"
             )
+        )
+    }
+
+    override fun getBanners(location: Location): List<Banner> {
+        return listOf(
+            Banner("1", "https://mir-s3-cdn-cf.behance.net/project_modules/1400/dc707f87809781.5dc335ae33489.jpg"),
+            Banner("2", "https://static.tildacdn.com/tild6461-3932-4434-a333-306663376261/07588d5ef5f552255c8f.jpg"),
+            Banner("3", "https://cdn.freelance.ru/img/portfolio/pics/00/3B/B5/3913096.jpg"),
+            Banner("4", "https://www.happytimepizzeria.no/wp-content/uploads/2015/02/IMG_6442.jpg"),
+            Banner("5", "https://img.kupibonus.ru/text/e/e/qn6w9w625kee.jpg")
         )
     }
 }

@@ -1,5 +1,6 @@
 package com.zhuravlev.foodviewer.net
 
+import com.zhuravlev.foodviewer.model.Banner
 import com.zhuravlev.foodviewer.model.Dish
 import com.zhuravlev.foodviewer.model.Location
 
@@ -12,4 +13,5 @@ import com.zhuravlev.foodviewer.model.Location
 interface NetworkService {
     fun getLocations(): List<Location>
     fun getMenuByLocations(location: Location): List<Dish>
+    fun getBanners(location: Location): List<Banner>
 }
