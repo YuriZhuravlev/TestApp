@@ -8,7 +8,7 @@ import androidx.room.TypeConverter
 enum class Category(val order: Int) {
     PIZZA(0),
     COMBO(1),
-    DESERT(2),
+    DESSERT(2),
     DRINK(3)
 }
 

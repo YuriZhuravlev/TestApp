@@ -3,4 +3,8 @@
     <string name="title_menu">Menu</string>
     <string name="title_profile">Profile</string>
     <string name="title_basket">Basket</string>
+    <string name="category_pizza">Pizza</string>
+    <string name="category_combo">Combo</string>
+    <string name="category_drink">Drinks</string>
+    <string name="category_dessert">Desserts</string>
 </resources>

@@ -9,6 +9,7 @@ import com.squareup.picasso.Picasso
 import com.zhuravlev.foodviewer.R
 import com.zhuravlev.foodviewer.model.Category
 import com.zhuravlev.foodviewer.ui.menu.dishes.DishViewHolder
+import com.zhuravlev.foodviewer.utils.localizationCategory
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.currentCoroutineContext
@@ -30,16 +31,14 @@ class CategoryAdapter : RecyclerView.Adapter<CategoryViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: CategoryViewHolder, position: Int) {
-        // TODO LOCAL
         holder.view.isSelected = (position == selectedIndex)
 
         holder.view.setOnClickListener {
-            // TODO send message to MenuViewModel
             if (position != selectedIndex) {
                 select(position)
             }
         }
-        holder.text.text = list[position].name
+        holder.text.text = localizationCategory(holder.view.context, list[position])
     }
 
     private fun select(position: Int) {

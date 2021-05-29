@@ -3,4 +3,8 @@
     <string name="title_menu">Меню</string>
     <string name="title_profile">Профиль</string>
     <string name="title_basket">Корзина</string>
+    <string name="category_pizza">Пицца</string>
+    <string name="category_combo">Комбо</string>
+    <string name="category_drink">Напитки</string>
+    <string name="category_dessert">Десерты</string>
 </resources>

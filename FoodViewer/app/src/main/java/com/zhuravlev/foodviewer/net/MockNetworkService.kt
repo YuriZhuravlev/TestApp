@@ -3,7 +3,6 @@ package com.zhuravlev.foodviewer.net
 import com.zhuravlev.foodviewer.model.Category
 import com.zhuravlev.foodviewer.model.Dish
 import com.zhuravlev.foodviewer.model.Location
-import javax.inject.Inject
 
 class MockNetworkService : NetworkService {
     override fun getLocations(): List<Location> {
@@ -68,7 +67,7 @@ class MockNetworkService : NetworkService {
                 "Мороженное обычное",
                 "",
                 "от 75 ₽",
-                Category.DESERT,
+                Category.DESSERT,
                 "https://gajmorit.com/userfiles/content-images/angina/71.jpg"
             ),
             Dish(
@@ -76,7 +75,7 @@ class MockNetworkService : NetworkService {
                 "Мороженное необычное",
                 "",
                 "от 200 ₽",
-                Category.DESERT,
+                Category.DESSERT,
                 "https://3.bp.blogspot.com/-w5RVptuhyrc/WFf_avxKl1I/AAAAAAAAADs/PLmLS-V6zYw57DZyAYLcUAjwXWn1arxqACLcB/s320/1435831822_screenshot_10.jpg"
             ),
             Dish(
