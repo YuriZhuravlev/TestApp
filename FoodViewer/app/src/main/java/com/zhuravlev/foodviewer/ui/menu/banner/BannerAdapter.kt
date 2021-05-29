@@ -22,6 +22,7 @@ class BannerAdapter : RecyclerView.Adapter<BannerViewHolder>() {
     override fun onBindViewHolder(holder: BannerViewHolder, position: Int) {
         Picasso.get().load(list[position].imageUrl)
             .placeholder(R.drawable.ic_placeholder)
+            .resize(256, 72)
             .transform(CustomTransform())
             .into(holder.image)
     }
@@ -65,8 +66,8 @@ class BannerAdapter : RecyclerView.Adapter<BannerViewHolder>() {
             paint.color = Color.parseColor("#BAB399")
             canvas.drawRoundRect(
                 rect.toRectF(),
-                source.width / 10 + 0.7f,
-                source.height / 10 + 0.7f,
+                6f,
+                6f,
                 paint
             )
             paint.xfermode = PorterDuffXfermode(PorterDuff.Mode.SRC_IN)
