@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="title_color">@color/white</color>
+    <color name="background_color">@color/gray_900</color>
+    <color name="selected_color">@color/gray_600</color>
+</resources>
