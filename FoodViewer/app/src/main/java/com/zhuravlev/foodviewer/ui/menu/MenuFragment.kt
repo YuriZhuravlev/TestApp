@@ -16,9 +16,9 @@ import com.zhuravlev.foodviewer.R
 import com.zhuravlev.foodviewer.databinding.FragmentMenuBinding
 import com.zhuravlev.foodviewer.model.Category
 import com.zhuravlev.foodviewer.ui.common.CustomToolbarFragment
+import com.zhuravlev.foodviewer.ui.menu.banner.BannerAdapter
 import com.zhuravlev.foodviewer.ui.menu.category.CategoryAdapter
 import com.zhuravlev.foodviewer.ui.menu.dishes.DishAdapter
-import com.zhuravlev.foodviewer.ui.menu.dishes.DishViewHolder
 import com.zhuravlev.foodviewer.ui.menu.spinner.locationAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
@@ -57,25 +57,40 @@ class MenuFragment : CustomToolbarFragment() {
 
         locationInit()
         menuInit()
+        bannerInit()
 
         return binding.root
     }
 
+    private fun bannerInit() {
+        val adapter = BannerAdapter()
+        val recycler = _binding!!.menuBanner
+        recycler.adapter = adapter
+
+        launchTask {
+            menuViewModel.bannerList.collect {
+                it?.let {
+                    adapter.updateAdapter(it)
+                }
+            }
+        }
+    }
+
     private fun menuInit() {
         val categoryRecycler = _binding!!.menuCategory
-        val menuDishes = _binding!!.menuDishes
+        val dishRecycler = _binding!!.menuDishes
         val categoryAdapter = CategoryAdapter()
         val dishAdapter = DishAdapter()
 
         categoryRecycler.adapter = categoryAdapter
-        menuDishes.adapter = dishAdapter
+        dishRecycler.adapter = dishAdapter
 
         // Установка взаимодействия между категориями и текущим элементом списка меню TODO надо будет вынести хотя бы в ViewModel
         var currentCategory = Category.PIZZA
 
         val layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
-        menuDishes.layoutManager = layoutManager
-        menuDishes.addOnScrollListener(object: RecyclerView.OnScrollListener() {
+        dishRecycler.layoutManager = layoutManager
+        dishRecycler.addOnScrollListener(object: RecyclerView.OnScrollListener() {
             override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
                 currentCategory = dishAdapter.getCategory(layoutManager.findFirstVisibleItemPosition())
                 categoryAdapter.setSelectCategory(currentCategory)

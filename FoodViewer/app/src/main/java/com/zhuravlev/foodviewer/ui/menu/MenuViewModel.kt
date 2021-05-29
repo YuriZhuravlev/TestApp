@@ -6,6 +6,7 @@ import com.zhuravlev.foodviewer.model.Banner
 import com.zhuravlev.foodviewer.model.Category
 import com.zhuravlev.foodviewer.model.Dish
 import com.zhuravlev.foodviewer.model.Location
+import com.zhuravlev.foodviewer.repository.banner.UseCaseBanner
 import com.zhuravlev.foodviewer.repository.category.UseCaseCategories
 import com.zhuravlev.foodviewer.repository.category.getCategories
 import com.zhuravlev.foodviewer.repository.dish.UseCaseDishes
@@ -21,9 +22,10 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MenuViewModel @Inject constructor(
-    val useCaseDishes: UseCaseDishes,
-    val useCaseLocation: UseCaseLocation,
-    val useCaseCategories: UseCaseCategories
+    private val useCaseDishes: UseCaseDishes,
+    private val useCaseLocation: UseCaseLocation,
+    private val useCaseCategories: UseCaseCategories,
+    private val useCaseBanner: UseCaseBanner
 ) : ViewModel() {
 
     private val _dishesList = MutableStateFlow<List<Dish>>(
@@ -40,7 +42,6 @@ class MenuViewModel @Inject constructor(
     )
     val categoryList: StateFlow<List<Category>> = _categoryList
 
-    // TODO
     private val _bannerList = MutableStateFlow<List<Banner>>(
         listOf()
     )
@@ -55,12 +56,11 @@ class MenuViewModel @Inject constructor(
             }
         }
 
-        // TODO Banner
-//        backgroundTask {
-//            useCaseDishes.getDishes()?.let {
-//                _dishesList.emit(it)
-//            }
-//        }
+        backgroundSingleTask {
+            useCaseBanner.getBanner()?.let {
+                _bannerList.emit(it)
+            }
+        }
 
         backgroundSingleTask {
             _dishesList.collect {
