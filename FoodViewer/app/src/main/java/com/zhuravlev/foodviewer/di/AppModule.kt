@@ -8,6 +8,8 @@ import com.zhuravlev.foodviewer.database.LocationDAO
 import com.zhuravlev.foodviewer.model.CategoryConverter
 import com.zhuravlev.foodviewer.net.MockNetworkService
 import com.zhuravlev.foodviewer.net.NetworkService
+import com.zhuravlev.foodviewer.repository.banner.UseCaseBanner
+import com.zhuravlev.foodviewer.repository.banner.UseCaseBannerImpl
 import com.zhuravlev.foodviewer.repository.category.UseCaseCategories
 import com.zhuravlev.foodviewer.repository.category.UseCaseCategoriesImpl
 import com.zhuravlev.foodviewer.repository.dish.UseCaseDishes
@@ -67,4 +69,10 @@ object AppModule {
         useCaseLocation: UseCaseLocation,
         networkService: NetworkService
     ): UseCaseDishes = UseCaseDishesImpl(dishDAO, useCaseLocation, networkService)
+
+    @Provides
+    fun provideUseCaseBanner(
+        useCaseLocation: UseCaseLocation,
+        networkService: NetworkService
+    ): UseCaseBanner = UseCaseBannerImpl(useCaseLocation, networkService)
 }
